@@ -14,6 +14,10 @@
                         echo '<div class="alert alert-success" role="alert">';
                         echo $this->session->flashdata('success_register');
                         echo '</div>';
+                      } elseif ($this->session->flashdata('msg') !='') {
+                        echo '<div class="alert alert-danger" role="alert">';
+                        echo $this->session->flashdata('msg');
+                        echo '</div>';
                       }
                   ?>
                   <p class="text-medium-emphasis">Sign In to your account</p>

@@ -12,6 +12,9 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
+		if (isset($_SESSION['isLoggedin'])) {
+			redirect(base_url('dashboard'));
+		} else{
 		$data['pageTitle'] = "BingoApp | Login Pages";
 
 		$this->load->view('component/head', $data);
@@ -19,6 +22,7 @@ class Login extends CI_Controller {
 		$this->load->view('component/forms/f_login');		
 		$this->load->view('component/_com_foot');
 		$this->load->view('component/foot');
+		}	
 	}
 
 	function actLogin(){
@@ -28,21 +32,30 @@ class Login extends CI_Controller {
 			'username_login' => $username,
 			'password_login' => md5($password)
 			);
-		$findUsr = $this->Common_models->findUsr("tbl_login",$where)->num_rows();
+
+		$query = $this->Common_models->findData("tbl_login",$where);
+
+		foreach ($query->result_array() as $datauser) {
+			$id_login = $datauser['ID_TBL_LOGIN'];
+		}
 		
-		if($findUsr > 0){
+		$isTrue = $query->num_rows();
+		
+		if($isTrue > 0){
  
 			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
+				'id_login' => $id_login,
+				'username' => $username,
+				'isLoggedin' => true
 				);
  
 			$this->session->set_userdata($data_session);
- 
+ 			
 			echo "data ditemukan";
- 
+ 			redirect(base_url('dashboard'));
 		}else{
-			echo "Username dan password salah !";
+			$this->session->set_flashdata('msg', 'Username dan password salah !');
+			redirect(base_url('login'));
 		}
 	}
  

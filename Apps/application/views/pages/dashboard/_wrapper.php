@@ -1,12 +1,12 @@
   </head>
   <body>
-    <?php $this->load->view('component/dashboard/_sidebar',); ?>
+    <?php $this->load->view('component/_sidebar',); ?>
 
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
 
       <?php $this->load->view('component/dashboard/_header'); ?>
       
-      <?php $this->load->view('component/dashboard/_content'); ?>
+      <?php $this->load->view($contentPages); ?>
 
       <?php $this->load->view('component/dashboard/_footer'); ?>
       
