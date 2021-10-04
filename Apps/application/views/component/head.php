@@ -16,3 +16,5 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keyword" content="">
+
+    <title><?php echo $pageTitle ?></title>
