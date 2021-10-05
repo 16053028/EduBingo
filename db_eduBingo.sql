@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     02/10/2021 10:54:29                          */
+/* Created on:     05/10/2021 09:22:24                          */
 /*==============================================================*/
 
 
@@ -51,7 +51,7 @@ drop table if exists TBL_USER_DETAILS;
 /*==============================================================*/
 create table TBL_BINGO_CARD
 (
-   ID_BINGO_CARD        int not null,
+   ID_BINGO_CARD        int not null auto_increment,
    primary key (ID_BINGO_CARD)
 );
 
@@ -60,7 +60,7 @@ create table TBL_BINGO_CARD
 /*==============================================================*/
 create table TBL_GAME
 (
-   ID_GAME              int not null,
+   ID_GAME              int not null auto_increment,
    PEMENANG_GAME        varchar(10),
    primary key (ID_GAME)
 );
@@ -70,7 +70,7 @@ create table TBL_GAME
 /*==============================================================*/
 create table TBL_GAME_TEMP
 (
-   ID_GAME_TEMP         int not null,
+   ID_GAME_TEMP         int not null auto_increment,
    ID_GAME              int,
    ID_BINGO_CARD        int,
    ID_PLAYER            int,
@@ -82,7 +82,7 @@ create table TBL_GAME_TEMP
 /*==============================================================*/
 create table TBL_INSTANSI_PENDIDIKAN
 (
-   ID_INSTANSI_PENDIDIKAN int not null,
+   ID_INSTANSI_PENDIDIKAN int not null auto_increment,
    ID_STATUS_INSTANSI   int,
    NAMA_INSTANSI_PENDIDIKAN varchar(50),
    ALAMAT_INSTANSI_PENDIDIKAN varchar(255),
@@ -94,7 +94,7 @@ create table TBL_INSTANSI_PENDIDIKAN
 /*==============================================================*/
 create table TBL_KELAS
 (
-   ID_KELAS             int not null,
+   ID_KELAS             int not null auto_increment,
    TEKS_KELAS           varchar(20),
    KETERANGAN_KELAS     varchar(50),
    primary key (ID_KELAS)
@@ -122,8 +122,8 @@ create table TBL_MAHASISWA
    ID_TBL_LOGIN         int not null,
    ID_INSTANSI_PENDIDIKAN int not null,
    ID_TBL_SEMESTER      int,
-   ID_MAHASISWA         int not null,
-   primary key (ID_USER, ID_MAHASISWA)
+   ID_MAHASISWA         int not null auto_increment,
+   primary key (ID_MAHASISWA)
 );
 
 /*==============================================================*/
@@ -131,7 +131,7 @@ create table TBL_MAHASISWA
 /*==============================================================*/
 create table TBL_MAPEL
 (
-   ID_MAPEL             int not null,
+   ID_MAPEL             int not null auto_increment,
    ID_KELAS             int,
    TEKS_MAPEL           varchar(20),
    KETERANGAN_MAPEL     varchar(50),
@@ -143,7 +143,7 @@ create table TBL_MAPEL
 /*==============================================================*/
 create table TBL_MATKUL
 (
-   ID_MATKUL            int not null,
+   ID_MATKUL            int not null auto_increment,
    ID_TBL_SEMESTER      int,
    TEKS_MATKUL          varchar(20),
    KETERANGAN_MATKUL    varchar(50),
@@ -155,7 +155,7 @@ create table TBL_MATKUL
 /*==============================================================*/
 create table TBL_PILGAN_SOAL
 (
-   ID_PILGAN_SOAL       int not null,
+   ID_PILGAN_SOAL       int not null auto_increment,
    ID_SOAL              int,
    TEKS_PILGAN          longtext,
    IS_KEY               int,
@@ -167,7 +167,7 @@ create table TBL_PILGAN_SOAL
 /*==============================================================*/
 create table TBL_PLAYER
 (
-   ID_PLAYER            int not null,
+   ID_PLAYER            int not null auto_increment,
    ID_MAHASISWA         int,
    TBL_ID_MAHASISWA     int,
    ID_USER              int,
@@ -179,7 +179,7 @@ create table TBL_PLAYER
 /*==============================================================*/
 create table TBL_SEMESTER
 (
-   ID_TBL_SEMESTER      int not null,
+   ID_TBL_SEMESTER      int not null auto_increment,
    TEKS_SEMESTER        varchar(10),
    KETERANGAN_SEMESTER  varchar(50),
    primary key (ID_TBL_SEMESTER)
@@ -194,9 +194,9 @@ create table TBL_SISWA
    ID_USER_DETAILS      int not null,
    ID_TBL_LOGIN         int not null,
    ID_INSTANSI_PENDIDIKAN int not null,
-   ID_SISWA             int not null,
+   ID_SISWA             int not null auto_increment,
    ID_KELAS             int,
-   primary key (ID_USER, ID_SISWA)
+   primary key (ID_SISWA)
 );
 
 /*==============================================================*/
@@ -204,7 +204,7 @@ create table TBL_SISWA
 /*==============================================================*/
 create table TBL_SOAL
 (
-   ID_SOAL              int not null,
+   ID_SOAL              int not null auto_increment,
    ID_SOAL_MAPEL        int,
    ID_SOAL_MATKUL       int,
    TEXT_SOAL            longtext,
@@ -216,7 +216,7 @@ create table TBL_SOAL
 /*==============================================================*/
 create table TBL_SOAL_MAPEL
 (
-   ID_SOAL_MAPEL        int not null,
+   ID_SOAL_MAPEL        int not null auto_increment,
    ID_MAPEL             int,
    primary key (ID_SOAL_MAPEL)
 );
@@ -226,7 +226,7 @@ create table TBL_SOAL_MAPEL
 /*==============================================================*/
 create table TBL_SOAL_MATKUL
 (
-   ID_SOAL_MATKUL       int not null,
+   ID_SOAL_MATKUL       int not null auto_increment,
    ID_MATKUL            int,
    primary key (ID_SOAL_MATKUL)
 );
@@ -236,7 +236,7 @@ create table TBL_SOAL_MATKUL
 /*==============================================================*/
 create table TBL_STATUS_INSTANSI
 (
-   ID_STATUS_INSTANSI   int not null,
+   ID_STATUS_INSTANSI   int not null auto_increment,
    TEKS_STATUS_INSTANSI varchar(20),
    KETERANGAN_STATUS_INSTANSI varchar(255),
    primary key (ID_STATUS_INSTANSI)
@@ -247,7 +247,7 @@ create table TBL_STATUS_INSTANSI
 /*==============================================================*/
 create table TBL_STATUS_USER
 (
-   ID_STATUS_USER       int not null,
+   ID_STATUS_USER       int not null auto_increment,
    TEKS_STATUS_USER     varchar(50),
    KETRANGAN__STATUS_USER varchar(255),
    primary key (ID_STATUS_USER)
@@ -258,7 +258,7 @@ create table TBL_STATUS_USER
 /*==============================================================*/
 create table TBL_TEMP_BINGO_CARD
 (
-   ID_TEMP_BINGO_CARD   int not null,
+   ID_TEMP_BINGO_CARD   int not null auto_increment,
    ID_BINGO_CARD        int,
    ID_SOAL              int,
    IS_TRUE_             int,
@@ -270,7 +270,7 @@ create table TBL_TEMP_BINGO_CARD
 /*==============================================================*/
 create table TBL_USER
 (
-   ID_USER              int not null,
+   ID_USER              int not null auto_increment,
    ID_USER_DETAILS      int,
    ID_TBL_LOGIN         int,
    ID_INSTANSI_PENDIDIKAN int,
@@ -282,7 +282,7 @@ create table TBL_USER
 /*==============================================================*/
 create table TBL_USER_DETAILS
 (
-   ID_USER_DETAILS      int not null,
+   ID_USER_DETAILS      int not null auto_increment,
    ID_STATUS_USER       int,
    NAMA_USER            varchar(30),
    ALAMAT_USER          varchar(255),
