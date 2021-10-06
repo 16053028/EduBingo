@@ -13,29 +13,3 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?php echo base_url("vendors/coreui/assets/favicon/ms-icon-144x144.png") ?>">
     <meta name="theme-color" content="#ffffff">
-
-    <!-- Vendors styles-->
-    <link rel="stylesheet" href="<?php echo base_url("vendors/coreui/vendors/simplebar/css/simplebar.css") ?>">
-    <link rel="stylesheet" href="<?php echo base_url("vendors/coreui/css/vendors/simplebar.css") ?>">
-
-    <!-- Main styles for this application-->
-    <link href="<?php echo base_url("vendors/coreui/css/style.css") ?>" rel="stylesheet">
-
-    <!-- We use those styles to show code examples, you should remove them in your application.-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
-    <link href="<?php echo base_url("vendors/coreui/css/examples.css") ?>" rel="stylesheet">
-    
-    <!-- Global site tag (gtag.js) - Google Analytics-->
-   <!--  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      // Shared ID
-      gtag('config', 'UA-118965717-3');
-      // Bootstrap ID
-      gtag('config', 'UA-118965717-5');
-    </script> -->

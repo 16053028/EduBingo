@@ -22,29 +22,25 @@ class Dashboard extends CI_Controller {
 			$id_tbl_login = $base_data['ID_TBL_LOGIN'];
 			$id_instansi_pendidikan = $base_data['ID_INSTANSI_PENDIDIKAN'];
 			$id_status_user = $base_data['ID_STATUS_USER'];
+			$status_user = $base_data['TEKS_STATUS_USER'];
 		}
 		
 		// Page Data
 		$data['pageTitle'] = "BingoApp | Administrator Panel";
 		$data['contentPages'] = 'component/dashboard/_content';
 		
-		var_dump($base_data);
+		// var_dump($base_data);
 
 		// User Data
 		$data['id_user'] = $id_user;
 		$data['nama_user'] = $nama_user;
 		$data['id_status_user'] = $id_status_user;
-
-		//Load view with auth login
+		
 		if (isset($_SESSION['isLoggedin'])) {
-			$this->load->view('component/head', $data);
-			$this->load->view('component/_com_head');
-			$this->load->view('pages/dashboard/_wrapper');		
-			$this->load->view('component/_com_foot');
-			$this->load->view('component/foot');
+			$this->load->view('pages/dashboard/_wrapper', $data);
 		} else{
 			$this->session->set_flashdata('msg', 'Anda belum login. Silahkan login terlebih dahulu.');
-			redirect(base_url('login'));
+			redirect(base_url('auth'));
 		}
 			
 	}

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Auth extends CI_Controller {
 
 	function __construct()
 	{
@@ -17,12 +17,9 @@ class Login extends CI_Controller {
 		} else{
 		$data['pageTitle'] = "BingoApp | Login Pages";
 
-		$this->load->view('component/head', $data);
-		$this->load->view('component/_com_head');
-		$this->load->view('component/forms/f_login');		
-		$this->load->view('component/_com_foot');
-		$this->load->view('component/foot');
-		}	
+		$this->load->view('pages/auth/login/_wrapper', $data);
+		}
+		
 	}
 
 	function actLogin(){
@@ -48,6 +45,12 @@ class Login extends CI_Controller {
 				'username' => $username,
 				'isLoggedin' => true
 				);
+
+			$data = array(
+				'is_active' => 1
+			);
+
+			$this->Common_models->update('ID_TBL_LOGIN', $id_login, 'tbl_login', $data);
  
 			$this->session->set_userdata($data_session);
  			
@@ -55,13 +58,19 @@ class Login extends CI_Controller {
  			redirect(base_url('dashboard'));
 		}else{
 			$this->session->set_flashdata('msg', 'Username dan password salah !');
-			redirect(base_url('login'));
+			redirect(base_url('auth'));
 		}
 	}
  
 	function logout(){
+		$data = array(
+				'is_active' => 0
+			);
+
+		$this->Common_models->update('ID_TBL_LOGIN', $_SESSION['id_login'], 'tbl_login', $data);
 		$this->session->sess_destroy();
-		redirect(base_url('login'));
+		redirect(base_url('auth'));
+		
 	}
 
 }
