@@ -52,3 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['dashboard/status_pengguna'] = 'debug/status_pengguna';
+$route['dashboard/status_instansi'] = 'debug/status_instansi';
+$route['login'] = 'auth';
+$route['logout'] = 'auth/logout';
+
+$route['hapus_status_instansi/(:num)'] = 'debug/hapus_data/ID_STATUS_INSTANSI/$id_2/tbl_status_instansi';

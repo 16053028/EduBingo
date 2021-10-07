@@ -4,7 +4,7 @@ $this->load->view('component/_load_icons');
  ?>
 
     <!-- Vendors styles-->
-    <link rel="stylesheet" href="<?php echo base_url("vendors/simplebar/css/simplebar.css"); ?>">
+    <link rel="stylesheet" href="<?php echo base_url("vendors/coreui/vendors/simplebar/css/simplebar.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("vendors/coreui/css/vendors/simplebar.css"); ?>">
     <!-- Main styles for this application-->
     <link href="<?php echo base_url("vendors/coreui/css/style.css"); ?>" rel="stylesheet">

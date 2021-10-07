@@ -14,7 +14,7 @@ class Common_models extends CI_Model {
 		$this->db->update($table, $data);
 	}
 
-	public function delete($coltbl, $id, $table)
+	public function deleteData($coltbl, $id, $table)
 	{
 		$this->db->where($coltbl, $id);
 		$this->db->delete($table);
@@ -29,6 +29,21 @@ class Common_models extends CI_Model {
 		return $this->db->get_where($table, [$coltbl => $id])->row_array();
 	}
 
+	public function getAllData($table){
+		$this->db->select('*');
+		$this->db->from($table);
+		$query = $this->db->get();
+		if($query->num_rows() != 0)
+	    {
+	        return $query->result_array();
+	    }
+	    else
+	    {
+	        return false;
+	    }
+
+	}
+
 
 	function getDetailUser($id_login){
 		$this->db->select('*');
@@ -38,6 +53,21 @@ class Common_models extends CI_Model {
 	    $this->db->join('tbl_login login','login.id_tbl_login=user.id_tbl_login', 'left');
 	    $this->db->join('tbl_instansi_pendidikan instansi_pendidikan','instansi_pendidikan.id_instansi_pendidikan=user.id_instansi_pendidikan', 'left');
 	    $this->db->where('user.id_tbl_login', $id_login);         
+	    $query = $this->db->get(); 
+	    if($query->num_rows() != 0)
+	    {
+	        return $query->result_array();
+	    }
+	    else
+	    {
+	        return false;
+	    }
+	}
+
+	function getDetailInstansi(){
+		$this->db->select('*');
+	    $this->db->from('tbl_instansi_pendidikan instansi_pendidikan'); 
+	    $this->db->join('tbl_status_instansi status_instansi','status_instansi.id_status_instansi=instansi_pendidikan.id_status_instansi', 'left');        
 	    $query = $this->db->get(); 
 	    if($query->num_rows() != 0)
 	    {
