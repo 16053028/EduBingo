@@ -90,6 +90,26 @@
           </li>
           <li class="breadcrumb-item active"><span>Status Instansi</span></li>
         </ol>
+         <?php elseif ($this->uri->segment(2) === "pengguna"): ?>
+        <ol class="breadcrumb my-0 ms-2">
+          <li class="breadcrumb-item">
+            <!-- if breadcrumb is single--><span>Dashboard</span>
+          </li>
+          <li class="breadcrumb-item active"><span>Pengguna</span></li>
+        </ol>
+         <?php elseif ($this->uri->segment(2) === "instansi_pendidikan"): ?>
+        <ol class="breadcrumb my-0 ms-2">
+          <li class="breadcrumb-item">
+            <!-- if breadcrumb is single--><span>Dashboard</span>
+          </li>
+          <li class="breadcrumb-item active"><span>Instansi</span></li>
+        </ol>
+      <?php elseif ($this->uri->segment(1) === "dashboard"): ?>
+        <ol class="breadcrumb my-0 ms-2">
+          <li class="breadcrumb-item">
+            <!-- if breadcrumb is single--><span>Dashboard</span>
+          </li>
+        </ol>
       <?php endif ?>
       
     </nav>

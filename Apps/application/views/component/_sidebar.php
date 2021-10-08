@@ -15,21 +15,14 @@
     <li class="nav-title">Administrator</li>
 
     <li class="nav-item">
-      <a class="nav-link" href="colors.html">
+      <a class="nav-link" href="<?php echo base_url("pengguna"); ?>">
         <svg class="nav-icon">
           <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-people"></use>
         </svg> Pengguna</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="colors.html">
-        <svg class="nav-icon">
-          <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-        </svg>Operator</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="<?php echo base_url("debug/instansi_pendidikan"); ?>">
+      <a class="nav-link" href="<?php echo base_url("instansi_pendidikan"); ?>">
         <svg class="nav-icon">
           <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-institution"></use>
         </svg>Instansi</a>
@@ -39,15 +32,11 @@
     <li class="nav-title">Settings</li>
     <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
         <svg class="nav-icon">
-          <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
+          <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-star"></use>
         </svg> Status</a>
       <ul class="nav-group-items">
-        <li class="nav-item"><a class="nav-link" href="<?php echo base_url("debug/status_instansi"); ?>"><svg class="nav-icon">
-          <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-institution"></use>
-        </svg>Instansi</a> </li>
-        <li class="nav-item"><a class="nav-link" href="<?php echo base_url("debug/status_pengguna"); ?>"><svg class="nav-icon">
-          <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-        </svg>Pengguna</a> </li>
+        <li class="nav-item"><a class="nav-link" href="<?php echo base_url("instansi_pendidikan/status_instansi"); ?>">Instansi</a> </li>
+        <li class="nav-item"><a class="nav-link" href="<?php echo base_url("pengguna/status_pengguna"); ?>">Pengguna</a> </li>
         
       </ul>
     </li>

@@ -3,6 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Common_models extends CI_Model {
 
+	function dataCount($table){
+		return $this->db->get($table)->num_rows();
+	}
+
+	function dataTable($table,$number,$offset){
+		return $query = $this->db->get($table,$number,$offset)->result();
+	}
+
 	function insert_data($table,$data){
 		$this->db->insert($table,$data);
 		return true;
@@ -18,6 +26,16 @@ class Common_models extends CI_Model {
 	{
 		$this->db->where($coltbl, $id);
 		$this->db->delete($table);
+	}
+
+	public function deleteUser($id){
+		return $this->db->query(
+			"DELETE tbl_user, tbl_user_details, tbl_login
+			FROM tbl_user,tbl_user_details,tbl_login 
+			WHERE tbl_user.ID_USER_DETAILS=tbl_user_details.ID_USER_DETAILS 
+			AND tbl_user.ID_TBL_LOGIN=tbl_login.ID_TBL_LOGIN 
+			AND tbl_user.ID_USER= $id"
+		);
 	}
 
 	function findData($table,$where){
@@ -44,8 +62,27 @@ class Common_models extends CI_Model {
 
 	}
 
+	function getDetailUser($limit, $offset){
+		$this->db->select('*');
+	    $this->db->from('tbl_user user'); 
+	    $this->db->join('tbl_user_details user_details','user_details.id_user_details=user.id_user_details', 'left');
+	    $this->db->join('tbl_status_user status_user','status_user.id_status_user=user_details.id_status_user', 'left');
+	    $this->db->join('tbl_login login','login.id_tbl_login=user.id_tbl_login', 'left');
+	    $this->db->join('tbl_instansi_pendidikan instansi_pendidikan','instansi_pendidikan.id_instansi_pendidikan=user.id_instansi_pendidikan', 'left'); 
+	    $this->db->limit($limit, $offset);        
+	    $query = $this->db->get(); 
+	    if($query->num_rows() != 0)
+	    {
+	        return $query->result_array();
+	    }
+	    else
+	    {
+	        return false;
+	    }
+	}
 
-	function getDetailUser($id_login){
+
+	function getDetailUserWhere($id_login){
 		$this->db->select('*');
 	    $this->db->from('tbl_user user'); 
 	    $this->db->join('tbl_user_details user_details','user_details.id_user_details=user.id_user_details', 'left');
@@ -64,10 +101,11 @@ class Common_models extends CI_Model {
 	    }
 	}
 
-	function getDetailInstansi(){
+	function getDetailInstansi($limit, $offset){
 		$this->db->select('*');
 	    $this->db->from('tbl_instansi_pendidikan instansi_pendidikan'); 
-	    $this->db->join('tbl_status_instansi status_instansi','status_instansi.id_status_instansi=instansi_pendidikan.id_status_instansi', 'left');        
+	    $this->db->join('tbl_status_instansi status_instansi','status_instansi.id_status_instansi=instansi_pendidikan.id_status_instansi', 'left');
+	    $this->db->limit($limit, $offset);        
 	    $query = $this->db->get(); 
 	    if($query->num_rows() != 0)
 	    {

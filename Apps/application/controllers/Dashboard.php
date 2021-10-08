@@ -11,9 +11,12 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
+		$where = array(
+			'IS_ACTIVE' => '1'
+		);
 
 		// join table
-		$detail_user = $this->Common_models->getDetailUser($_SESSION['id_login']);
+		$detail_user = $this->Common_models->getDetailUserWhere($_SESSION['id_login']);
 
 		foreach ($detail_user as $base_data) {
 			$id_user = $base_data['ID_USER'];
@@ -28,6 +31,10 @@ class Dashboard extends CI_Controller {
 		// Page Data
 		$data['pageTitle'] = "BingoApp | Administrator Panel";
 		$data['contentPages'] = 'component/dashboard/_content';
+		$data['total_user_online'] = $this->Common_models->findData('tbl_login',$where)->num_rows();
+		$data['total_user']  = $this->Common_models->dataCount('tbl_user');
+		$data['total_instansi']  = $this->Common_models->dataCount('tbl_instansi_pendidikan');
+		$data['presentase_online'] = $data['total_user_online']/$data['total_user']*100;
 		
 		// var_dump($base_data);
 
