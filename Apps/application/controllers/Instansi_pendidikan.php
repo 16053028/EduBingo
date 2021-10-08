@@ -90,12 +90,8 @@ class Instansi_pendidikan extends CI_Controller {
 	public function hapus_instansi_pendidikan($colPars, $idPars, $tablePars){
 		if (isset($_SESSION['isLoggedin'])) {
 			$this->Common_models->deleteData($colPars, $idPars, $tablePars);
-			$this->session->set_flashdata('msg', 'Data berhasil dihapus.');
-			if ($tablePars == "tbl_status_user") {
-				redirect(base_url('debug/status_pengguna'));
-			}elseif ($tablePars == "tbl_status_instansi") {
-				redirect(base_url('debug/status_instansi'));
-			}
+			$this->session->set_flashdata('success', 'Data instansi berhasil dihapus.');
+			redirect(base_url('instansi_pendidikan'));
 			
 		} else{
 			$this->session->set_flashdata('msg', 'Anda belum login. Silahkan login terlebih dahulu.');
@@ -170,6 +166,83 @@ class Instansi_pendidikan extends CI_Controller {
 
 		$this->session->set_flashdata('success','Berhasil menambahkan data Status Instansi');
 		redirect('pengguna/status_pengguna');
+	}
+
+
+	public function form_add_instansi(){
+		$data['status_instansi'] = $this->Common_models->getAllData('tbl_status_instansi');
+		// Page Data
+		$data['pageTitle'] = "BingoApp | Tambah Status Instansi";
+		$data['contentPages'] = 'component/forms/instansi/f_instansi';
+		
+		// var_dump($data);
+
+		// User Data
+		
+		if (isset($_SESSION['isLoggedin'])) {
+			$this->load->view('pages/dashboard/_wrapper', $data);
+		} else{
+			$this->session->set_flashdata('msg', 'Anda belum login. Silahkan login terlebih dahulu.');
+			redirect(base_url('auth'));
+		}
+	}
+
+	public function add_instansi(){   
+	    $nama_instansi = $this->input->post('nama_instansi');
+		$alamat_instansi = $this->input->post('alamat_instansi');
+		$status_instansi = $this->input->post('status_instansi');
+
+		$data = array(
+			'ID_STATUS_INSTANSI' => $status_instansi,
+			'NAMA_INSTANSI_PENDIDIKAN' => $nama_instansi,
+			'ALAMAT_INSTANSI_PENDIDIKAN' => $alamat_instansi
+		);
+
+		$this->Common_models->insert_data('tbl_instansi_pendidikan', $data);
+
+		$this->session->set_flashdata('success','Berhasil menambahkan data Instansi');
+		redirect('instansi_pendidikan');
+	}
+
+	public function form_edit_instansi($idInstansi){
+		$where = array(
+			'ID_INSTANSI_PENDIDIKAN' => $idInstansi
+		);
+		
+		$data['edit_instansi'] = $this->Common_models->findData('tbl_instansi_pendidikan',$where)->row();
+
+		$data['status_instansi'] = $this->Common_models->getAllData('tbl_status_instansi');
+		// Page Data
+		$data['pageTitle'] = "BingoApp | Tambah Status Instansi";
+		$data['contentPages'] = 'component/forms/instansi/f_edit_instansi';
+		
+		// var_dump($data);
+
+		// User Data
+		
+		if (isset($_SESSION['isLoggedin'])) {
+			$this->load->view('pages/dashboard/_wrapper', $data);
+		} else{
+			$this->session->set_flashdata('msg', 'Anda belum login. Silahkan login terlebih dahulu.');
+			redirect(base_url('auth'));
+		}
+	}
+
+	public function edit_instansi($idInstansi){   
+	    $nama_instansi = $this->input->post('nama_instansi');
+		$alamat_instansi = $this->input->post('alamat_instansi');
+		$status_instansi = $this->input->post('status_instansi');
+
+		$data = array(
+			'ID_STATUS_INSTANSI' => $status_instansi,
+			'NAMA_INSTANSI_PENDIDIKAN' => $nama_instansi,
+			'ALAMAT_INSTANSI_PENDIDIKAN' => $alamat_instansi
+		);
+
+		$this->Common_models->update('ID_INSTANSI_PENDIDIKAN', $idInstansi, 'tbl_instansi_pendidikan', $data);
+
+		$this->session->set_flashdata('success','Berhasil merubah data Instansi');
+		redirect('instansi_pendidikan');
 	}
 
 }

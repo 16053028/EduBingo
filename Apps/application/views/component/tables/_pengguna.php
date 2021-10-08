@@ -13,7 +13,7 @@
   <table class="table table-secondary table-hover">
     <thead>
       <tr>
-        <a class="btn btn-info" style="float: right;" href="<?php echo base_url('instansi_pendidikan/form_add_status'); ?>" role="button">
+        <a class="btn btn-info" style="float: right;" href="<?php echo base_url('pengguna/add_pengguna'); ?>" role="button">
         <svg class="icon icon-lg">
             <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-plus"></use>
           </svg> Tambah Pengguna</a>

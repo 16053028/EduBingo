@@ -89,7 +89,7 @@ class Pengguna extends CI_Controller {
 			$this->Common_models->deleteUser($idUser);
 			$this->session->set_flashdata('msg', 'Data berhasil dihapus.');
 			
-			redirect(base_url('debug/pengguna'));
+			redirect(base_url('pengguna'));
 			
 		} else{
 			$this->session->set_flashdata('msg', 'Anda belum login. Silahkan login terlebih dahulu.');

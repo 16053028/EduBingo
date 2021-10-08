@@ -35,7 +35,7 @@
             <svg class="icon icon-lg">
               <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
             </svg> Edit</a>
-          <a class="btn btn-danger" href="<?php echo base_url('debug/hapus_data/' . 'ID_STATUS_USER/' . $data['ID_STATUS_USER'] . '/'. 'tbl_status_user'); ?>" role="button">
+          <a class="btn btn-danger" href="<?php echo base_url('pengguna/hapus_data/' . 'ID_STATUS_USER/' . $data['ID_STATUS_USER'] . '/'. 'tbl_status_user'); ?>" role="button">
           <svg class="icon icon-lg">
               <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-trash"></use>
             </svg> Delete</a>

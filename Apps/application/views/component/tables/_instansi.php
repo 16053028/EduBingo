@@ -12,7 +12,7 @@
   <table class="table table-secondary table-hover">
     <thead>
       <tr>
-        <a class="btn btn-info" style="float: right;" href="<?php echo base_url('instansi_pendidikan/form_add_status'); ?>" role="button">
+        <a class="btn btn-info" style="float: right;" href="<?php echo base_url('instansi_pendidikan/form_add_instansi'); ?>" role="button">
         <svg class="icon icon-lg">
             <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-plus"></use>
           </svg> Tambah Instansi</a>
@@ -35,7 +35,7 @@
         <td><?php echo $data['ALAMAT_INSTANSI_PENDIDIKAN']; ?></td>
         <td><?php echo $data['TEKS_STATUS_INSTANSI']; ?></td>
         <td>
-          <a class="btn btn-warning" href="#" role="button">
+          <a class="btn btn-warning" href="<?php echo base_url('instansi_pendidikan/form_edit_instansi/' . $data['ID_INSTANSI_PENDIDIKAN']); ?>>" role="button">
             <svg class="icon icon-lg">
               <use xlink:href="<?php echo base_url("vendors/coreui/"); ?>vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
             </svg> Edit</a>
